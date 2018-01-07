@@ -22,6 +22,33 @@ allprojects {
     }
 }
 
+ext {
+    supportLibraryVersion = '26.1.0'
+    constraintLayoutVersion = '1.0.2'
+    junitVersion = '4.12'
+    testRunnerVersion = '1.0.1'
+    espressoVersion = '3.0.1'
+
+    testDependencies = [
+            junit: "junit:junit:$junitVersion",
+            testRunner: "com.android.support.test:runner:$testRunnerVersion",
+            espresso: "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    ]
+
+    supportDependencies = [
+            design: "com.android.support:design:$supportLibraryVersion",
+            appCompat_v7: "com.android.support:appcompat-v7:$supportLibraryVersion",
+            constraintLayout: "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    ]
+
+    appConfig = [
+            compileSdkVersion = 26,
+            targetSdkVersion = 26,
+            minSdkVersion = 15,
+            applicationId = "panekpawel.pl.panczur"
+    ]
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
