@@ -28,6 +28,7 @@ ext {
     junitVersion = '4.12'
     testRunnerVersion = '1.0.1'
     espressoVersion = '3.0.1'
+    daggerVersion = '2.11'
 
     kotlinImpl = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
@@ -49,6 +50,13 @@ ext {
             design: "com.android.support:design:$supportLibraryVersion",
             appCompat_v7: "com.android.support:appcompat-v7:$supportLibraryVersion",
             constraintLayout: "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+    ]
+
+    injection = [
+            daggerCompiler: "com.google.dagger:dagger-compiler:$daggerVersion",
+            dagger: "com.google.dagger:dagger:$daggerVersion",
+            daggerSupport: "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:$daggerVersion"
     ]
 }
 

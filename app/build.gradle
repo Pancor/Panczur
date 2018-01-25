@@ -23,9 +23,16 @@ android {
 
 dependencies {
     implementation kotlinImpl
+
     implementation supportDependencies.appCompat_v7
     implementation supportDependencies.constraintLayout
+
     testImplementation testDependencies.junit
     androidTestImplementation testDependencies.testRunner
     androidTestImplementation testDependencies.espresso
+
+    implementation injection.dagger
+    implementation injection.daggerSupport
+    annotationProcessor injection.daggerCompiler
+    annotationProcessor injection.daggerProcessor
 }
