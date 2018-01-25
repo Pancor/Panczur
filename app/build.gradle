@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply from: "$project.rootDir/tools/script-git-version.gradle"
 
 android {
     compileSdkVersion appConfig.compileSdkVersion
@@ -10,8 +9,8 @@ android {
         applicationId appConfig.applicationId
         minSdkVersion appConfig.minSdkVersion
         targetSdkVersion appConfig.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode getVersionCodeApp()
+        versionName getVersionNameApp()
         testInstrumentationRunner testDependencies.testInstrumentationRunner
     }
     buildTypes {
