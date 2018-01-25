@@ -24,15 +24,23 @@ android {
 dependencies {
     implementation kotlinImpl
 
+    //android
     implementation supportDependencies.appCompat_v7
     implementation supportDependencies.constraintLayout
 
+    //tests
     testImplementation testDependencies.junit
     androidTestImplementation testDependencies.testRunner
     androidTestImplementation testDependencies.espresso
 
+    //dagger
     implementation injection.dagger
     implementation injection.daggerSupport
     annotationProcessor injection.daggerCompiler
     annotationProcessor injection.daggerProcessor
+
+    //rx
+    implementation rx.java
+    implementation rx.kotlin
+    implementation rx.android
 }
