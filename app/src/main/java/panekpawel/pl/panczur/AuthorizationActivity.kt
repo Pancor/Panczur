@@ -8,5 +8,7 @@ class AuthorizationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_authorization)
+
+        throw NullPointerException("TEST_RELEASE")
     }
 }

@@ -5,6 +5,14 @@ apply plugin: 'io.fabric'
 apply from: "$project.rootDir/tools/script-git-version.gradle"
 
 android {
+    signingConfigs {
+        panczur_release {
+            keyAlias 'panczur'
+            keyPassword 'tatama29lub29'
+            storeFile file('D:/Panczur/keystore.jks')
+            storePassword 'tatama29lub29'
+        }
+    }
     compileSdkVersion appConfig.compileSdkVersion
     defaultConfig {
         applicationId appConfig.applicationId
@@ -18,6 +26,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.panczur_release
         }
     }
 }
@@ -55,6 +64,5 @@ dependencies {
 
     //firebase
     implementation "com.google.firebase:firebase-core:$firebaseVersion"
-
 }
 apply plugin: 'com.google.gms.google-services'

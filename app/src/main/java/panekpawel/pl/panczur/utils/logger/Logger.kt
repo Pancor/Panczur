@@ -2,6 +2,7 @@ package panekpawel.pl.panczur.utils.logger
 
 import android.util.Log
 import com.crashlytics.android.Crashlytics
+import com.crashlytics.android.core.CrashlyticsCore
 import panekpawel.pl.panczur.BuildConfig
 import timber.log.Timber
 import javax.inject.Inject
