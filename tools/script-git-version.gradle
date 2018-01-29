@@ -1,3 +1,4 @@
+//TODO version name doesn't work
 ext.getVersionNameApp = { ->
     try {
         def stdout = new ByteArrayOutputStream()
