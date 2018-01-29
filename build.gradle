@@ -33,8 +33,10 @@ ext {
     rxJavaVersion = '2.0.1'
     rxKotlinVersion = '2.0.0'
     mockitoVersion = '2.7.22'
+    timberVersion = '4.5.1'
 
     kotlinImpl = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    timberImpl = "com.jakewharton.timber:timber:$timberVersion"
 
     appConfig = [
             compileSdkVersion: 26,

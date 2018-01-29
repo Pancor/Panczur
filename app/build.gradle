@@ -24,6 +24,8 @@ android {
 dependencies {
     implementation kotlinImpl
 
+    implementation timberImpl
+
     //android
     implementation supportDependencies.appCompat_v7
     implementation supportDependencies.constraintLayout

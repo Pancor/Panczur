@@ -5,5 +5,5 @@ import javax.inject.Singleton
 
 @Singleton
 class Logger @Inject constructor(){
-    
+
 }
