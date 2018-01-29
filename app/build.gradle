@@ -12,7 +12,7 @@ android {
         targetSdkVersion appConfig.targetSdkVersion
         versionCode getVersionCodeApp()
         versionName getVersionNameApp()
-        testInstrumentationRunner testDependencies.testInstrumentationRunner
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -23,36 +23,38 @@ android {
 }
 
 dependencies {
-    implementation kotlinImpl
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    implementation timberImpl
-
-    //android
-    implementation supportDependencies.appCompat_v7
-    implementation supportDependencies.constraintLayout
-
-    //tests
-    testImplementation testDependencies.junit
-    androidTestImplementation testDependencies.testRunner
-    androidTestImplementation testDependencies.espresso
-    testImplementation testDependencies.mockito
-    androidTestImplementation testDependencies.mockitoAndroid
-
-    //dagger
-    implementation injection.dagger
-    implementation injection.daggerSupport
-    annotationProcessor injection.daggerCompiler
-    annotationProcessor injection.daggerProcessor
-
-    //rx
-    implementation rx.java
-    implementation rx.kotlin
-    implementation rx.android
-
-    implementation('com.crashlytics.sdk.android:crashlytics:2.7.1@aar') {
+    //logs
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation("com.crashlytics.sdk.android:crashlytics:$crashlyticsVersion") {
         transitive = true
     }
-    implementation 'com.google.firebase:firebase-core:11.8.0'
+
+    //android
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+
+    //tests
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$mockitoVersion"
+
+    //dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    //rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+
+    //firebase
+    implementation "com.google.firebase:firebase-core:$firebaseVersion"
 
 }
 apply plugin: 'com.google.gms.google-services'
