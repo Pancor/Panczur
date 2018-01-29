@@ -32,6 +32,7 @@ ext {
     rxAndroidVersion = '2.0.1'
     rxJavaVersion = '2.0.1'
     rxKotlinVersion = '2.0.0'
+    mockitoVersion = '2.7.22'
 
     kotlinImpl = "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
@@ -46,7 +47,9 @@ ext {
             junit: "junit:junit:$junitVersion",
             testRunner: "com.android.support.test:runner:$testRunnerVersion",
             espresso: "com.android.support.test.espresso:espresso-core:$espressoVersion",
-            testInstrumentationRunner: "android.support.test.runner.AndroidJUnitRunner"
+            testInstrumentationRunner: "android.support.test.runner.AndroidJUnitRunner",
+            mockito: "org.mockito:mockito-core:$mockitoVersion",
+            mockitoAndroid: "org.mockito:mockito-android:$mockitoVersion"
     ]
 
     supportDependencies = [

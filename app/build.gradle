@@ -32,6 +32,8 @@ dependencies {
     testImplementation testDependencies.junit
     androidTestImplementation testDependencies.testRunner
     androidTestImplementation testDependencies.espresso
+    testImplementation testDependencies.mockito
+    androidTestImplementation testDependencies.mockitoAndroid
 
     //dagger
     implementation injection.dagger
