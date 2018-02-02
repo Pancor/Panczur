@@ -2,7 +2,7 @@ package panekpawel.pl.panczur.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
-import panekpawel.pl.panczur.AuthorizationActivity
+import panekpawel.pl.panczur.auth.AuthorizationActivity
 
 @Module
 abstract class ActivityBindingModule {
