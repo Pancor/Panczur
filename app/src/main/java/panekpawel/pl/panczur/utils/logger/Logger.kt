@@ -11,7 +11,7 @@ import javax.inject.Singleton
 @Singleton
 class Logger @Inject constructor(){
 
-    init {
+    fun startLogging() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         } else {

@@ -1,13 +1,26 @@
 package panekpawel.pl.panczur.base
 
-import android.app.Application
-import java.util.logging.Logger
+import dagger.android.AndroidInjector
+import dagger.android.support.DaggerApplication
+import panekpawel.pl.panczur.di.DaggerAppComponent
+import panekpawel.pl.panczur.utils.logger.Logger
+import javax.inject.Inject
 
+class App : DaggerApplication() {
 
-class App : Application() {
+    @Inject
+    lateinit var logger: Logger
 
     override fun onCreate() {
         super.onCreate()
+        logger.startLogging()
+    }
 
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        val appComponent = DaggerAppComponent.builder()
+                .app(this)
+                .build()
+        appComponent.inject(this)
+        return appComponent
     }
 }
