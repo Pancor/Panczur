@@ -6,8 +6,10 @@ import javax.xml.transform.Templates
 
 class SignInPresenter : SignInContract.Presenter {
 
+    lateinit var view: SignInContract.View
+
     override fun onSetView(view: SignInContract.View) {
-        
+        this.view = view
     }
 
     override fun signIn(email: String, password: String) {
