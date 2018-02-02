@@ -1,9 +1,8 @@
-//TODO version name doesn't work
 ext.getVersionNameApp = { ->
     try {
         def stdout = new ByteArrayOutputStream()
         exec {
-            commandLine 'git', 'describe', '--tags'
+            commandLine 'git', 'describe', '--dirty'
             standardOutput = stdout
         }
         return stdout.toString().trim() + '-' + getSHA()
