@@ -6,16 +6,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fr_sign_in.*
 import panekpawel.pl.panczur.R
 import panekpawel.pl.panczur.di.ActivityScope
 import javax.inject.Inject
 
 @ActivityScope
 class SignInFragment @Inject constructor() : DaggerFragment(), SignInContract.View {
-    
+
+    @Inject
+    lateinit var presenter: SignInContract.Presenter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?):
             View? = inflater.inflate(R.layout.fr_sign_in, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        signInBtn.setOnClickListener {  }//TODO: add reaction to presenter
+    }
 
     override fun showLoadingIndicator() {
         

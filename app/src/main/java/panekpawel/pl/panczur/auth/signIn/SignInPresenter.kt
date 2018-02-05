@@ -1,7 +1,9 @@
 package panekpawel.pl.panczur.auth.signIn
 
+import panekpawel.pl.panczur.di.ActivityScope
 import javax.inject.Inject
 
+@ActivityScope
 class SignInPresenter @Inject constructor() : SignInContract.Presenter {
 
     private lateinit var view: SignInContract.View
