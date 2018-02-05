@@ -24,7 +24,15 @@ class SignInFragment @Inject constructor() : DaggerFragment(), SignInContract.Vi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        signInBtn.setOnClickListener {  }//TODO: add reaction to presenter
+        setupSignInButton()
+    }
+
+    private fun setupSignInButton() {
+        signInBtn.setOnClickListener {
+            val email = emailInputView.text.toString()
+            val password = passwordInputView.text.toString()
+            presenter.signIn(email, password)
+        }
     }
 
     override fun showLoadingIndicator() {
