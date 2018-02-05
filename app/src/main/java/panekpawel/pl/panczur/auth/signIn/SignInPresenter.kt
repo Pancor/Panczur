@@ -1,12 +1,10 @@
 package panekpawel.pl.panczur.auth.signIn
 
-import java.io.File
-import javax.xml.transform.Templates
+import javax.inject.Inject
 
+class SignInPresenter @Inject constructor() : SignInContract.Presenter {
 
-class SignInPresenter : SignInContract.Presenter {
-
-    lateinit var view: SignInContract.View
+    private lateinit var view: SignInContract.View
 
     override fun onSetView(view: SignInContract.View) {
         this.view = view
