@@ -65,5 +65,8 @@ dependencies {
 
     //firebase
     implementation "com.google.firebase:firebase-core:$firebaseVersion"
+
+    //facebook
+    implementation "com.facebook.android:facebook-android-sdk:$facebookVersion"
 }
 apply plugin: 'com.google.gms.google-services'
