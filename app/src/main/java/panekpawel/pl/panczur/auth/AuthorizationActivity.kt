@@ -19,5 +19,18 @@ class AuthorizationActivity : DaggerAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.act_authorization)
+
+        setupSignInFragment()
+    }
+
+    private fun setupSignInFragment() {
+        var signInFragment: SignInFragment? = supportFragmentManager
+                .findFragmentById(R.id.container) as SignInFragment
+        if (signInFragment == null) {
+            signInFragment = signInProvider.get()
+            val transaction =  supportFragmentManager.beginTransaction()
+            transaction.add(R.id.container, signInFragment)
+            transaction.commit()
+        }
     }
 }
