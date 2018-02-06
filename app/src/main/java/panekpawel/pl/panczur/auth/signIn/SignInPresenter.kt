@@ -1,10 +1,11 @@
 package panekpawel.pl.panczur.auth.signIn
 
 import panekpawel.pl.panczur.di.ActivityScope
+import panekpawel.pl.panczur.utils.userUtil.UserContract
 import javax.inject.Inject
 
 @ActivityScope
-class SignInPresenter @Inject constructor() : SignInContract.Presenter {
+class SignInPresenter @Inject constructor(val userUtil: UserContract) : SignInContract.Presenter {
 
     private lateinit var view: SignInContract.View
 
@@ -13,7 +14,7 @@ class SignInPresenter @Inject constructor() : SignInContract.Presenter {
     }
 
     override fun signIn(email: String, password: String) {
-
+        userUtil.signIn(email, password)
     }
 
     override fun signInByFacebook() {

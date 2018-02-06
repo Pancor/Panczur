@@ -23,7 +23,7 @@ class SignInFragment @Inject constructor() : DaggerFragment(), SignInContract.Vi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        presenter.onSetView(this)
         setupSignInButton()
     }
 
