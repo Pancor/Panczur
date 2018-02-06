@@ -7,6 +7,7 @@ import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import dagger.android.support.DaggerApplication
 import panekpawel.pl.panczur.base.App
+import panekpawel.pl.panczur.utils.schedulers.SchedulerModule
 import panekpawel.pl.panczur.utils.userUtil.UserModule
 import panekpawel.pl.panczur.utils.userUtil.UserUtil
 import panekpawel.pl.panczur.utils.userUtil.auth.AuthModule
@@ -15,7 +16,7 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = arrayOf(AndroidSupportInjectionModule::class, AppModule::class,
                              ActivityBindingModule::class, AuthModule::class,
-                             UserModule::class))
+                             UserModule::class, SchedulerModule::class))
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
     fun inject(app: App)

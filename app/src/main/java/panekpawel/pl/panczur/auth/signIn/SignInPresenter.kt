@@ -1,11 +1,13 @@
 package panekpawel.pl.panczur.auth.signIn
 
 import panekpawel.pl.panczur.di.ActivityScope
+import panekpawel.pl.panczur.utils.schedulers.BaseSchedulerProvider
 import panekpawel.pl.panczur.utils.userUtil.UserContract
 import javax.inject.Inject
 
 @ActivityScope
-class SignInPresenter @Inject constructor(val userUtil: UserContract) : SignInContract.Presenter {
+class SignInPresenter @Inject constructor(val userUtil: UserContract,
+                                          val schedulers: BaseSchedulerProvider) : SignInContract.Presenter {
 
     private lateinit var view: SignInContract.View
 
