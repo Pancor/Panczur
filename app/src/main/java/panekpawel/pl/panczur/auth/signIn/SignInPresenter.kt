@@ -15,7 +15,13 @@ class SignInPresenter @Inject constructor(val userUtil: UserContract,
         disposable.add(userUtil.signIn(email, password)
                 .observeOn(schedulers.ui())
                 .subscribeOn(schedulers.io())
-                .subscribe())
+                .subscribe { result ->
+                    if (result.isSucceed) {
+                        view.verificationSuccess()
+                    } else {
+                        view.signInError(result.code)
+                    }
+                })
     }
 
     override fun signInByFacebook() {

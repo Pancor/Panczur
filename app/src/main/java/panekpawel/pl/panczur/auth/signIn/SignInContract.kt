@@ -1,10 +1,11 @@
 package panekpawel.pl.panczur.auth.signIn
 
+import panekpawel.pl.panczur.base.BasePresenterContract
 import panekpawel.pl.panczur.base.BaseView
 
 interface SignInContract {
 
-    interface Presenter {
+    interface Presenter : BasePresenterContract<View> {
 
         fun signIn(email: String, password: String)
 

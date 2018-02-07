@@ -24,8 +24,7 @@ class AuthorizationActivity : DaggerAppCompatActivity() {
     }
 
     private fun setupSignInFragment() {
-        var signInFragment: SignInFragment? = supportFragmentManager
-                .findFragmentById(R.id.container) as SignInFragment
+        var signInFragment = supportFragmentManager.findFragmentById(R.id.container) as SignInFragment?
         if (signInFragment == null) {
             signInFragment = signInProvider.get()
             val transaction =  supportFragmentManager.beginTransaction()
