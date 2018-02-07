@@ -4,6 +4,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 import io.reactivex.Single
 import panekpawel.pl.panczur.models.Result
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -11,8 +12,8 @@ import javax.inject.Singleton
 class AuthManager @Inject constructor(val fireBaseAuth: FirebaseAuth) : AuthContract {
 
     companion object {
-        const val SIGN_IN_SUCCEED = "sign_in_succeed"
-        const val UNKNOWN_ERROR = "unknown_error"
+        const val SIGN_IN_SUCCEED = "SIGN_IN_SUCCEED"
+        const val UNKNOWN_ERROR = "UNKNOWN_ERROR"
     }
 
     override fun signIn(email: String, password: String): Single<Result> {
@@ -21,9 +22,13 @@ class AuthManager @Inject constructor(val fireBaseAuth: FirebaseAuth) : AuthCont
                     .addOnCompleteListener {
                         if (it.isSuccessful) {
                             emitter.onSuccess(Result(isSucceed = true, code = SIGN_IN_SUCCEED))
+                            Timber.d("Sign in by email and password succeed")
                         } else {
                             val exception = it.exception as FirebaseAuthException
-                            emitter.onSuccess(handleSignInException(exception))
+                            val result = handleSignInException(exception)
+                            emitter.onSuccess(result)
+                            Timber.d("Sign in by email and password returned error: " +
+                                    result.code)
                         }
                     }
         })
