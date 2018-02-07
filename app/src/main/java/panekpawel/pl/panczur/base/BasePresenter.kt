@@ -1,7 +1,6 @@
 package panekpawel.pl.panczur.base
 
 import io.reactivex.disposables.CompositeDisposable
-import kotlin.properties.Delegates
 
 open class BasePresenter<T: BaseView> : BasePresenterContract<T>{
 
