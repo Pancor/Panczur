@@ -1,0 +1,15 @@
+package panekpawel.pl.panczur.utils.schedulers
+
+import io.reactivex.Scheduler
+import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+
+
+class TrampolineShcedulerProvider @Inject constructor(): BaseSchedulerProvider {
+
+    override fun computation(): Scheduler = Schedulers.trampoline()
+
+    override fun io(): Scheduler = Schedulers.trampoline()
+
+    override fun ui(): Scheduler = Schedulers.trampoline()
+}

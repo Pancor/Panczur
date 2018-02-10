@@ -1,8 +1,13 @@
 package panekpawel.pl.panczur.utils.userUtil.auth
 
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
+import io.reactivex.Emitter
 import io.reactivex.Single
+import io.reactivex.SingleEmitter
+import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Cancellable
 import panekpawel.pl.panczur.models.Result
 import timber.log.Timber
 import javax.inject.Inject
@@ -18,6 +23,8 @@ class AuthManager @Inject constructor(val fireBaseAuth: FirebaseAuth) : AuthCont
 
     override fun signIn(email: String, password: String): Single<Result> {
         Timber.d("Email: $email, password: $password")
+
+
         return Single.create({ emitter ->
             fireBaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
@@ -25,7 +32,7 @@ class AuthManager @Inject constructor(val fireBaseAuth: FirebaseAuth) : AuthCont
                             emitter.onSuccess(Result(isSucceed = true, code = SIGN_IN_SUCCEED))
                             Timber.d("Sign in by email and password succeed")
                         } else {
-                            val exception = it.exception as FirebaseAuthException
+                            val exception = it.exception as FirebaseAuthException?
                             val result = handleSignInException(exception)
                             emitter.onSuccess(result)
                             Timber.d("Sign in by email and password returned error: " +
