@@ -11,6 +11,8 @@ import org.mockito.Mock
 import org.mockito.Mockito.*
 import org.mockito.Mockito.`when` as whenever
 import org.mockito.MockitoAnnotations
+import org.mockito.invocation.InvocationOnMock
+import org.mockito.stubbing.Answer
 import panekpawel.pl.panczur.models.Result
 
 class AuthManagerTest {
@@ -36,16 +38,18 @@ class AuthManagerTest {
     fun signInByEmailAndPasswordWithSuccessThenCheckIfResultSucceeds() {
         whenever(authResult.isSuccessful).thenReturn(true)
         whenever(fireBaseAuth.signInWithEmailAndPassword(EMAIL, PASSWORD)).thenReturn(authResult)
-        doAnswer{
+
+        doAnswer {
             val listener = it.arguments[0] as OnCompleteListener<AuthResult>
             listener.onComplete(authResult)
-
+            authResult
         }.`when`(authResult)
-                .addOnCompleteListener(ArgumentMatchers.any())
+                .addOnCompleteListener(ArgumentMatchers.any<OnCompleteListener<AuthResult>>())
 
         val expectedResult = Result(isSucceed = true, code = AuthManager.SIGN_IN_SUCCEED)
 
-        val testObserver = authManager.signIn(EMAIL, PASSWORD).test()
+        val testObserver = authManager.signIn(EMAIL, PASSWORD)
+                .test()
         testObserver.awaitTerminalEvent()
 
         testObserver

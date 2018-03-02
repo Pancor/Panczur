@@ -23,8 +23,6 @@ class AuthManager @Inject constructor(val fireBaseAuth: FirebaseAuth) : AuthCont
 
     override fun signIn(email: String, password: String): Single<Result> {
         Timber.d("Email: $email, password: $password")
-
-
         return Single.create({ emitter ->
             fireBaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener {
