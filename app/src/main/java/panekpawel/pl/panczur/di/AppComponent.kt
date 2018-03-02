@@ -11,12 +11,13 @@ import panekpawel.pl.panczur.utils.schedulers.SchedulerModule
 import panekpawel.pl.panczur.utils.userUtil.UserModule
 import panekpawel.pl.panczur.utils.userUtil.UserUtil
 import panekpawel.pl.panczur.utils.userUtil.auth.AuthModule
+import panekpawel.pl.panczur.utils.userUtil.auth.form.FormModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = arrayOf(AndroidSupportInjectionModule::class, AppModule::class,
-                             ActivityBindingModule::class, AuthModule::class,
-                             UserModule::class, SchedulerModule::class))
+@Component(modules = [(AndroidSupportInjectionModule::class), (AppModule::class),
+    (ActivityBindingModule::class), (AuthModule::class), (UserModule::class),
+    (SchedulerModule::class), (FormModule::class)])
 interface AppComponent : AndroidInjector<DaggerApplication> {
 
     fun inject(app: App)

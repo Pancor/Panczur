@@ -7,8 +7,10 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class UserUtil @Inject constructor(val authManager: AuthContract) : UserContract {
+class UserUtil @Inject constructor(private val authManager: AuthContract) : UserContract {
 
     override fun signIn(email: String, password: String): Single<Result> =
             authManager.signIn(email, password)
+
+    override fun signInByFacebook(): Single<Result> = authManager.signInByFacebook()
 }

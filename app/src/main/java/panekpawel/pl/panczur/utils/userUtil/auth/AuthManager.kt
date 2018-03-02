@@ -9,36 +9,17 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AuthManager @Inject constructor(private val fireBaseAuth: FirebaseAuth) : AuthContract {
+class AuthManager @Inject constructor(private val formAuth: AuthContract.Form) : AuthContract {
 
     companion object {
         const val SIGN_IN_SUCCEED = "SIGN_IN_SUCCEED"
         const val UNKNOWN_ERROR = "UNKNOWN_ERROR"
     }
 
-    override fun signIn(email: String, password: String): Single<Result> {
-        Timber.d("Email: $email, password: $password")
-        return Single.create({ emitter ->
-            fireBaseAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener {
-                        if (it.isSuccessful) {
-                            emitter.onSuccess(Result(isSucceed = true, code = SIGN_IN_SUCCEED))
-                            Timber.d("Sign in by email and password succeed")
-                        } else {
-                            val exception = it.exception as FirebaseAuthException?
-                            val result = handleSignInException(exception)
-                            emitter.onSuccess(result)
-                            Timber.d("Sign in by email and password returned error: " +
-                                    result.code)
-                        }
-                    }
-        })
-    }
+    override fun signIn(email: String, password: String) = formAuth.signIn(email, password)
 
-    private fun handleSignInException(exception: FirebaseAuthException?): Result {
-        if (exception == null) {
-            return Result(isSucceed = false, code = UNKNOWN_ERROR)
-        }
-        return Result(isSucceed = false, code = exception.errorCode)
+
+    override fun signInByFacebook(): Single<Result> {
+        return Single.create({})
     }
 }

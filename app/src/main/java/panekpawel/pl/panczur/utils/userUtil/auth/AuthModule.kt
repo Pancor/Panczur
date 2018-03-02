@@ -1,17 +1,18 @@
 package panekpawel.pl.panczur.utils.userUtil.auth
 
-import com.google.firebase.auth.FirebaseAuth
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
+import panekpawel.pl.panczur.utils.userUtil.auth.form.FormAuth
 import javax.inject.Singleton
 
 @Module
-class AuthModule {
+abstract class AuthModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideAuthManager(): AuthContract {
-        val auth = FirebaseAuth.getInstance()
-        return AuthManager(auth)
-    }
+    abstract fun bindAuthManager(authManager: AuthManager): AuthContract
+
+    @Binds
+    @Singleton
+    abstract fun bindeFormAuth(formAuth: FormAuth): AuthContract.Form
 }
